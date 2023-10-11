@@ -1,0 +1,19 @@
+# versione di docker compse
+version: "3.9"
+
+services:
+  # Nome dato alla nostra applicazione
+  app:
+    build:
+      context: .
+    # Connette la porta 8000 locale a quella del docker container
+    ports:
+      - "8000:8000"
+    # Connette la cartella app a quella del docker container
+    # I file del container si aggiornano ogni qualvolta che salviamo i file nella cartella locale
+    volumes:
+      - ".app:/app"
+    
+    # Default command when run docker compose up
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"

@@ -12,7 +12,7 @@ services:
     # Connette la cartella app a quella del docker container
     # I file del container si aggiornano ogni qualvolta che salviamo i file nella cartella locale
     volumes:
-      - ".app:/app"
+      - "/app:/app"
     
     # Default command when run docker compose up
     command: >

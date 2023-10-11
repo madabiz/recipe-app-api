@@ -31,7 +31,7 @@ RUN python -m venv /py && \
 
 # Scrive una variabile d'ambiente all'interno dell'imagine docker
 # In questo modo tutti i comandi vengono lanciati da dentro la venv
-ENV path="/py/bin:$PATH"
+ENV PATH="/py/bin:$PATH"
 
 # Seleziona l'utente
 USER django-user

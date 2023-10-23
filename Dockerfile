@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 # Copia il file requirements da locale e lo inserisce su una cartella temporanea del container docker
 COPY ./requirements.txt /tmp/requirements.txt
 # Copia il file requirements utilizzato per development da locale e lo inserisce su una cartella temporanea del container docker
-COPY ./requirements.txt /tmp/requirements.dev.txt
+COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 # Copia la cartella locale app sul container docker
 COPY ./app /app
 # Cartella da dove vengon lanciati tutti i comandi docker 

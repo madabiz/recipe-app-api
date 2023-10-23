@@ -1,11 +1,14 @@
 # versione di docker compse
-version: "3.9"
+version: "3.8"
 
 services:
   # Nome dato alla nostra applicazione
   app:
     build:
       context: .
+      # Setta un build argument DEV=True
+      args:
+        - DEV=true
     # Connette la porta 8000 locale a quella del docker container
     ports:
       - "8000:8000"

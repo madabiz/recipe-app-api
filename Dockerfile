@@ -1,5 +1,5 @@
 # Scarica da docker hub l'immagine di python per ambiente linux
-FROM python:3.9-alpine3.13 
+FROM python:3.9-alpine3.13
 
 # Label informativa
 LABEL mantainer="Madalin"
@@ -9,6 +9,8 @@ ENV PYTHONUNBUFFERED 1
 
 # Copia il file requirements da locale e lo inserisce su una cartella temporanea del container docker
 COPY ./requirements.txt /tmp/requirements.txt
+# Copia il file requirements utilizzato per development da locale e lo inserisce su una cartella temporanea del container docker
+COPY ./requirements.txt /tmp/requirements.dev.txt
 # Copia la cartella locale app sul container docker
 COPY ./app /app
 # Cartella da dove vengon lanciati tutti i comandi docker 
@@ -20,9 +22,15 @@ EXPOSE 8000
 # Installa venv, aggiorna pip e le dipendenze e rimuove la cartella
 # tmp dove ci sono i requiremenets per alleggerire l'immagine di docker
 # Crea un utente django-user, la best practice è di non usare root, perché se entrano nel server avrebbero privilegi da root
+
+ARG DEV=false
+
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
+    if [ $DEV = "true" ]; \
+        then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
+        fi && \
     rm -rf /tmp && \
     adduser \
         --disabled-password \

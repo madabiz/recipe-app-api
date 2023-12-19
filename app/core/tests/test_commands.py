@@ -14,7 +14,7 @@ from django.test import SimpleTestCase
 class CommandTests(SimpleTestCase):
     """test commands."""
 
-    def test_wait_for_db(self, patched_check):
+    def test_wait_for_db_ready(self, patched_check):
         """"Test wait for db if db is ready"""
         patched_check.return_value = True  # Simulate when db is ready
 

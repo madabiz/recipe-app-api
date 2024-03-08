@@ -16,7 +16,7 @@ services:
     # I file del container si aggiornano ogni qualvolta che salviamo i file nella cartella locale
     volumes:
       - ./app:/app
-    
+
     # Default command when run docker compose up
     command: >
       sh -c "python manage.py wait_for_db &&
@@ -29,7 +29,7 @@ services:
       - DB_PASS=changeme
     depends_on:
       - db
-  
+
   db:
     image: postgres:13-alpine
     volumes:

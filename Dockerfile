@@ -13,7 +13,7 @@ COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 # Copia la cartella locale app sul container docker
 COPY ./app /app
-# Cartella da dove vengon lanciati tutti i comandi docker 
+# Cartella da dove vengon lanciati tutti i comandi docker
 WORKDIR /app
 
 # L'immagine docker apre una porta verso il pc locale
